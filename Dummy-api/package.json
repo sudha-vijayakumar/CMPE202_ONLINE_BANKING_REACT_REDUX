@@ -1,0 +1,11 @@
+{
+  "name": "Dummy-api",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "json-server --watch db.json --port 8000"
+  },
+  "author": "ALNS",
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}

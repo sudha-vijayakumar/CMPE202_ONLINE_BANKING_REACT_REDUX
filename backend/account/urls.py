@@ -1,0 +1,40 @@
+from django.urls import path
+from . import views
+from rest_framework_jwt.views import obtain_jwt_token
+
+urlpatterns = [
+    path('api/Customer/', views.CustomerView.as_view()),
+    path('api/Account/', views.AccountView.as_view()),
+    path('api/Transaction/', views.TransactionView.as_view()),
+    path('api/Admin/', views.AdminView.as_view()),
+    path('api/getcustomers', views.get_customers),
+    path('api/getcustomer/<uuid:customer_id>', views.get_customer),
+    path('api/CreateCustomer', views.create_customer),
+    path('api/CreateCustomerToken', views.create_customer_token.as_view()),
+    path('api/DeleteCustomer/<uuid:customer_id>', views.delete_customer),
+    path('api/ChangeEmail/<uuid:customer_id>', views.change_customer_email),
+    path('api/addAccount', views.create_account),
+    path('api/deposit', views.deposit),
+    path('api/register', views.register),
+    path('api/withdraw', views.withdraw),
+    path('api/getAccounts/<uuid:customer_id>', views.get_accounts),
+    path('api/transaction/transfer', views.transfer_transaction),
+    path('api/getTransactions/<uuid:account_number>', views.get_transactions),
+    path('api/getBalance/<uuid:account_number>', views.get_balance),
+    path('api/transaction/send', views.send_transaction),
+    path('api/getActiveAccounts', views.get_active_accounts_for_customer),
+    path('api/getInactiveAccounts', views.get_inactive_accounts_for_customer),
+    path('api/getInactiveAdmin', views.get_all_inactive_accounts),
+    path('api/getInactivebyUsernameAdmin', views.get_inactive_accounts_by_username),
+    path('api/approveAccount', views.approve_account),
+    path('api/getActiveAdmin', views.get_all_active_accounts),
+    path('api/closeAccount', views.close_account),
+    path('api/refundAccount', views.add_refund),
+    path('api/chargeFee', views.charge_fee),
+    path('api/token-auth/', obtain_jwt_token),
+    path('api/getPastTransactions/18months', views.get_transactions_18_months_by_account),
+    path('api/getPastTransactions/range', views.get_transactions_by_range_by_account),
+    path('api/getCustomer/Username', views.get_customer_by_username),
+    path('api/createAdmin', views.create_admin_token.as_view()),
+    path('api/isAdmin', views.is_admin)
+]
